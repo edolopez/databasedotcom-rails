@@ -9,8 +9,10 @@ module Databasedotcom
             config = config[ENV['client']]
             username = config["username"] 
             password = config["password"]
+            token = config["token"]
             @dbdc_client = Databasedotcom::Client.new(config)
-            @dbdc_client.authenticate(:username => username, :password => password)
+            #@dbdc_client.authenticate(:username => username, :password => password)
+            @dbdc_client.authenticate(:username => username, :password => "#{password}#{token}")
           end
 
           @dbdc_client
